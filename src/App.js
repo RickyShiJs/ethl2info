@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import { HashRouter,Route,Switch} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// import Home from './pages/home/home'
+import Timeline from './pages/timeline/timeline'
+
+export default class App extends Component {
+    render() {
+        return (
+            /**路由跳转 */
+            <HashRouter>
+                <Switch>
+                    {/* 加exact使得一进'/'地址就加载home界面 */}
+                    <Route path='/' component={Timeline} exact />
+                    <Route path='/home' component={Timeline}/>
+                    {/* path:网页路由  component:jsx文件中class名（首字母大写） */
+                    // <Route path="/class" component={Class} />
+                    // <Route path="/docker" component={Docker} />
+                    // <Route path="/sExperiment" component={SExperiment} />
+                    // <Route path="/aExperiment" component={AExperiment} />
+                    // <Route path="/feedback" component={Feedback} />
+                    }
+                </Switch>
+            </HashRouter>
+        )
+    }
 }
-
-export default App;
